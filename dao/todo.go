@@ -20,3 +20,27 @@ func GetTodo(todoID uint) (*model.Todo, error) {
 	err := db.Where("id = ?", todoID).First(&todo).Error
 	return &todo, err
 }
+
+func PostTodo(todo *model.Todo) error {
+	todo.ID = 0
+	db := db2.GetDBConnection()
+	defer db.Close()
+	return db.Create(todo).Error
+}
+
+func PutTodo(todo *model.Todo) (*model.Todo, error) {
+	db := db2.GetDBConnection()
+	defer db.Close()
+	err := db.Save(todo).Error
+	return todo, err
+}
+
+func DeleteTodo(todoID uint) error {
+	db := db2.GetDBConnection()
+	defer db.Close()
+	todo, err := GetTodo(todoID)
+	if err != nil {
+		return err
+	}
+	return db.Delete(&todo).Error
+}

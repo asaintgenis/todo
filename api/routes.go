@@ -28,4 +28,22 @@ var routes = Routes{
 		"/todos/{todoId}",
 		GetTodo,
 	},
+	Route{
+		"PostTodo",
+		"POST",
+		"/todos",
+		PostTodo,
+	},
+	Route{
+		"PutTodo",
+		"PUT",
+		"/todos",
+		PutTodo,
+	},
+	Route{
+		"PostTodo",
+		"DELETE",
+		"/todos/{todoId}",
+		DeleteTodo,
+	},
 }
