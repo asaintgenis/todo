@@ -37,7 +37,7 @@ func GetTodo(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal("ID must be an unsigned integer")
 	}
-	todo, err := service.GetTodo(todoID)
+	todo, err := service.GetTodo(uint(todoID))
 	if err != nil {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)

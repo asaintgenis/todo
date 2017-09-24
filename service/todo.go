@@ -5,8 +5,8 @@ import (
 	"github.com/asaintgenis/todo/dao"
 )
 
-func GetTodos() (*model.Todo, error) {
-	todo, err := dao.getTodos()
+func GetTodos() ([]model.Todo, error) {
+	todo, err := dao.GetTodos()
 	if err != nil {
 		return nil, err
 	}
@@ -14,7 +14,7 @@ func GetTodos() (*model.Todo, error) {
 }
 
 func GetTodo(todoID uint) (*model.Todo, error) {
-	todo, err := dao.getTodo(todoID)
+	todo, err := dao.GetTodo(todoID)
 	if err != nil {
 		return nil, err
 	}

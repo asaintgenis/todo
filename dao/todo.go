@@ -1,17 +1,22 @@
 package dao
 
-import "github.com/asaintgenis/todo/model"
+import (
+	"github.com/asaintgenis/todo/model"
+	db2 "github.com/asaintgenis/todo/db"
+)
 
 func GetTodos() ([]model.Todo, error) {
-	var todos := []model.Todo{}
-	err := rs.DB().Where("id = ?", id).First(&bar).Error
-	return &bar, err
+	todos := []model.Todo{}
+	db := db2.GetDBConnection()
+	defer db.Close()
+	err := db.Find(&todos).Error
+	return todos, err
 }
 
 func GetTodo(todoID uint) (*model.Todo, error) {
-	todo, err := dao.getTodo(todoID)
-	if err != nil {
-		return nil, err
-	}
-	return todo,nil
+	todo := model.Todo{}
+	db := db2.GetDBConnection()
+	defer db.Close()
+	err := db.Where("id = ?", todoID).First(&todo).Error
+	return &todo,err
 }
