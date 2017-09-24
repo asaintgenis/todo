@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"github.com/asaintgenis/todo/model"
 	db2 "github.com/asaintgenis/todo/db"
+	"github.com/asaintgenis/todo/model"
 )
 
 func GetTodos() ([]model.Todo, error) {
@@ -18,5 +18,5 @@ func GetTodo(todoID uint) (*model.Todo, error) {
 	db := db2.GetDBConnection()
 	defer db.Close()
 	err := db.Where("id = ?", todoID).First(&todo).Error
-	return &todo,err
+	return &todo, err
 }

@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/asaintgenis/todo/model"
 	"github.com/asaintgenis/todo/dao"
+	"github.com/asaintgenis/todo/model"
 )
 
 func GetTodos() ([]model.Todo, error) {
@@ -10,7 +10,7 @@ func GetTodos() ([]model.Todo, error) {
 	if err != nil {
 		return nil, err
 	}
-	return todo,nil
+	return todo, nil
 }
 
 func GetTodo(todoID uint) (*model.Todo, error) {
@@ -18,5 +18,5 @@ func GetTodo(todoID uint) (*model.Todo, error) {
 	if err != nil {
 		return nil, err
 	}
-	return todo,nil
+	return todo, nil
 }

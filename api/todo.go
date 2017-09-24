@@ -3,11 +3,11 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"github.com/gorilla/mux"
 	"github.com/asaintgenis/todo/service"
-	"strconv"
+	"github.com/gorilla/mux"
 	"log"
+	"net/http"
+	"strconv"
 )
 
 //CatsIndex send a json back with all the cats database

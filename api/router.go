@@ -1,9 +1,9 @@
 package api
 
 import (
+	"github.com/asaintgenis/todo/utils"
 	"github.com/gorilla/mux"
 	"net/http"
-	"github.com/asaintgenis/todo/utils"
 )
 
 //NewRouter create a new router
@@ -16,7 +16,7 @@ func NewRouter() *mux.Router {
 		handler = route.HandlerFunc
 		handler = utils.Logger(handler, route.Name)
 		router.
-		Methods(route.Method).
+			Methods(route.Method).
 			Path(route.Pattern).
 			Name(route.Name).
 			Handler(handler)

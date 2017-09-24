@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
 	"github.com/asaintgenis/todo/api"
 	"log"
+	"net/http"
 )
 
 func main() {
