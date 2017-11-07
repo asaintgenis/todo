@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/asaintgenis/todo/api"
-	"github.com/asaintgenis/todo/db"
 	"log"
 	"net/http"
+
+	"github.com/asaintgenis/todo/api"
+	"github.com/asaintgenis/todo/db"
 )
 
 func main() {

@@ -1,9 +1,10 @@
 package api
 
 import (
+	"net/http"
+
 	"github.com/asaintgenis/todo/utils"
 	"github.com/gorilla/mux"
-	"net/http"
 )
 
 //NewRouter create a new router

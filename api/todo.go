@@ -3,14 +3,16 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/asaintgenis/todo/model"
-	"github.com/asaintgenis/todo/service"
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"strconv"
+
+	"github.com/asaintgenis/todo/model"
+	"github.com/asaintgenis/todo/service"
+	"github.com/gorilla/mux"
 )
 
+// GetTodos return a JSON of all todos or an error code
 func GetTodos(w http.ResponseWriter, r *http.Request) {
 	todos, err := service.GetTodos()
 	if err != nil {
@@ -30,6 +32,7 @@ func GetTodos(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w)
 }
 
+//GetTodo return the selected todo in JSON or an error message
 func GetTodo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	todoID, err := strconv.Atoi(vars["todoId"])
@@ -54,6 +57,7 @@ func GetTodo(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w)
 }
 
+// PostTodo create the todo send in body
 func PostTodo(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	var todo model.Todo
@@ -64,6 +68,7 @@ func PostTodo(w http.ResponseWriter, r *http.Request) {
 	service.PostTodo(&todo)
 }
 
+// PutTodo update the todo send in body
 func PutTodo(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	var todo model.Todo
@@ -74,6 +79,7 @@ func PutTodo(w http.ResponseWriter, r *http.Request) {
 	service.PutTodo(&todo)
 }
 
+// DeleteTodo delete the todo or send an error message
 func DeleteTodo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	todoID, err := strconv.Atoi(vars["todoId"])
